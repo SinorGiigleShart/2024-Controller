@@ -73,7 +73,6 @@ public class OmniWheels extends LinearOpMode {
     private DcMotor leftBackDrive = null;
     private DcMotor rightFrontDrive = null;
     private DcMotor rightBackDrive = null;
-// what the john
     @Override
     public void runOpMode() {
 
