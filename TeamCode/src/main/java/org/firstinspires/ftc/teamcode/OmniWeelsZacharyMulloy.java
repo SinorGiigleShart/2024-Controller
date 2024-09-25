@@ -34,11 +34,14 @@ public class OmniWheels extends LinearOpMode {
 
     // Declare OpMode members for each of the 4 motors.
     private ElapsedTime runtime = new ElapsedTime();
+    
+        //driveing motors 
     private DcMotor leftFrontDrive = null;
-    private DcMotor leftBackDrive = null;
     private DcMotor rightFrontDrive = null;
+    private DcMotor leftBackDrive = null;
     private DcMotor rightBackDrive = null;
-        //suchion tube Up motor arms
+    
+        //suchion tube Up motor arms/Zac's motors
     private DcMotor tubeLifter = null;
     private DcMotor impeller = null;
   
