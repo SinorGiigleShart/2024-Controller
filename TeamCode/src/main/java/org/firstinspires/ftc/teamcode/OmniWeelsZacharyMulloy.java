@@ -144,10 +144,16 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
             // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
             
             double axial   = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value -- Forward/Backward
-            double lateral =  gamepad1.right_stick_x;  // Strafe left/right
-            double yaw     =  gamepad1.left_stick_x; // Rotate left/right
-           
+            double lateral =  gamepad1.left_stick_x;  // Strafe left/right
+            double yaw     =  gamepad1.right_stick_x; // Rotate left/right
 
+                //triggers need a gretter then or less then value to work propely 
+            boolean tubelisfter_Up =gamepad2.dpad_up
+            boolean tubelisfter_Down =gamepad2.dpad_down;
+            boolean thisIsAServo_On_Off =gamepad2.dpad_right;
+            boolean impeller_On_Off =gamepad2.dpad_left;
+            
+            
             // Combine the joystick requests for each axis-motion to determine each wheel's power.
             // Set up a variable for each drive wheel to save the power level for telemetry.
             
@@ -170,6 +176,9 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
                 rightBackPower  /= max;
             }
 
+            if (tubelisfter_Up = true) {
+               
+            }
             // This is test code:
             //
             // Uncomment the following code to test your motor directions.
