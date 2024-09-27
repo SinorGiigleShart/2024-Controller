@@ -168,17 +168,35 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
             max = Math.max(Math.abs(leftFrontPower), Math.abs(rightFrontPower));
             max = Math.max(max, Math.abs(leftBackPower));
             max = Math.max(max, Math.abs(rightBackPower));
-
+            
+//###############################################            
             if (max > 1.0) {
                 leftFrontPower  /= max;
                 rightFrontPower /= max;
                 leftBackPower   /= max;
                 rightBackPower  /= max;
             }
-
+//###############################################
             if (tubelisfter_Up = true) {
-               
+               tubelifter.setpower(1);  
+            }else if (tubelifter_up == false){
+                tubelifter.setpower(0); 
             }
+//###############################################            
+            if (impeller_On_Off = true){
+                impeller.setpower(1);  
+            }
+            if (impeller_On_Off = false){
+                impeller.setpower(0);  
+            }
+//###############################################
+            if (thisIsAServo_On_Off = true){
+                thisIsAServo.setpower(1);  
+            } 
+            if (thisIsAServo_On_Off = false){
+                thisIsAServo.setpower(0); 
+            }
+//###############################################            
             // This is test code:
             //
             // Uncomment the following code to test your motor directions.
