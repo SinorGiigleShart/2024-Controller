@@ -34,6 +34,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
+import java.util.List;
+import java.until.ArrayList;
 
 /*
  * This file contains an example of a Linear "OpMode".
@@ -86,6 +88,11 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
     @Override
     public void runOpMode() {
 
+//its the thing that holds all of your motors and stuff
+    list<DcMotor> allMotors = new ArrayList<>();
+    list<Servo>   allServos = new ArrayList<>();
+
+
         // Initialize the hardware variables. Note that the strings used here must correspond
         // to the names assigned during the robot configuration step on the DS or RC devices.
 
@@ -102,6 +109,15 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
 
             //Zac's servos
         thisIsAServo = hardwareMap.get(Servo.class, "this_Is_A_Servo"); 
+
+            //allMotors.add
+        allMotors.add(LeftFrontDrive)
+        allMotors.add(rightFrontDrive)
+        allMotors.add(leftBackDrive)
+        allMotors.add(rightBackDrive)
+        allMotors.add(tubelifter)
+        allMotors.add(impeller)
+        allServos.add(thisIsAServo)
 
         // ########################################################################################
         // !!!            IMPORTANT Drive Information. Test your motor directions.            !!!!!
@@ -130,7 +146,17 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
 
         // Wait for the game to start (driver presses START)
         
-        telemetry.addData("High Five", "We Reboted!!!");
+        // telemetry.addData("status", "runTime: " +ruuntime.toString());
+        // telemetry.addData("Front Left/Right", "%4.2f", "%4.2", leftFrontPower, rightFrontPower);
+        // telemetry.addData("back Left/Right", "%4.2f", "%4.2", leftBackPower, rightBackPower);
+        for (DcMotor tubelifter in allMotors) {
+            telemetry.addData("MotorSpeed", ThisMotor.GetSpeed())
+        }
+
+        for (Servo thisIsAServo in allServos){
+            telemetry.addData("ServoPosition", thisIsAServo.GetPosition())
+        }
+        
         telemetry.update();
 
         waitForStart();
@@ -148,14 +174,16 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
             double yaw     =  gamepad1.right_stick_x; // Rotate left/right
 
                 //triggers need a gretter then or less then value to work propely 
-            boolean tubelisfter_Up =gamepad2.dpad_up
-            boolean tubelisfter_Down =gamepad2.dpad_down;
+            boolean tubeLifter_Up =gamepad2.dpad_up
+            boolean tubeLifter_Down =gamepad2.dpad_down;
             boolean thisIsAServo_On_Off =gamepad2.dpad_right;
             boolean impeller_On_Off =gamepad2.dpad_left;
             
             
             // Combine the joystick requests for each axis-motion to determine each wheel's power.
             // Set up a variable for each drive wheel to save the power level for telemetry.
+            static final double LIFT_SPEED = (1);
+            static int LIFT_SPEED = (1);
             
             double leftFrontPower  = axial + lateral + yaw;
             double rightFrontPower = axial - lateral - yaw;
@@ -169,34 +197,41 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
             max = Math.max(max, Math.abs(leftBackPower));
             max = Math.max(max, Math.abs(rightBackPower));
             
-//###############################################            
+    //###############################################            
             if (max > 1.0) {
                 leftFrontPower  /= max;
                 rightFrontPower /= max;
                 leftBackPower   /= max;
                 rightBackPower  /= max;
             }
-//###############################################
-            if (tubelisfter_Up = true) {
+    //###############################################
+            if (tubeLifter_Up == true) {
                tubelifter.setpower(1);  
-            }else if (tubelifter_up == false){
-                tubelifter.setpower(0); 
+            }else if (tubeLifter_up == false){
+                tubeLifter.setpower(0); 
             }
-//###############################################            
+    //###############################################            
             if (impeller_On_Off = true){
                 impeller.setpower(1);  
             }
             if (impeller_On_Off = false){
                 impeller.setpower(0);  
             }
-//###############################################
+    //###############################################
             if (thisIsAServo_On_Off = true){
                 thisIsAServo.setpower(1);  
             } 
             if (thisIsAServo_On_Off = false){
                 thisIsAServo.setpower(0); 
             }
-//###############################################            
+    //###############################################  
+            if (tubelisfter_Up){
+                tubelifter.setpower(LIFT_SPEED);
+            } else if (tubelifter_down){
+                tubelifter.setpower(-LIFT_SPEED)
+            } else {
+                tubeLifter.setpower(0);
+            }
             // This is test code:
             //
             // Uncomment the following code to test your motor directions.
