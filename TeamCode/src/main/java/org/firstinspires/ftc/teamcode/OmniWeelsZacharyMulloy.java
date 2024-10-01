@@ -111,13 +111,13 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
         thisIsAServo = hardwareMap.get(Servo.class, "this_Is_A_Servo"); 
 
             //allMotors.add
-        allMotors.add(LeftFrontDrive)
-        allMotors.add(rightFrontDrive)
-        allMotors.add(leftBackDrive)
-        allMotors.add(rightBackDrive)
-        allMotors.add(tubelifter)
-        allMotors.add(impeller)
-        allServos.add(thisIsAServo)
+        allMotors.add(LeftFrontDrive);
+        allMotors.add(rightFrontDrive);
+        allMotors.add(leftBackDrive);
+        allMotors.add(rightBackDrive);
+        allMotors.add(tubelifter);
+        allMotors.add(impeller);
+        allServos.add(thisIsAServo);
 
         // ########################################################################################
         // !!!            IMPORTANT Drive Information. Test your motor directions.            !!!!!
@@ -150,11 +150,11 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
         // telemetry.addData("Front Left/Right", "%4.2f", "%4.2", leftFrontPower, rightFrontPower);
         // telemetry.addData("back Left/Right", "%4.2f", "%4.2", leftBackPower, rightBackPower);
         for (DcMotor tubelifter in allMotors) {
-            telemetry.addData("MotorSpeed", ThisMotor.GetSpeed())
+            telemetry.addData("MotorSpeed", ThisMotor.GetSpeed());
         }
 
         for (Servo thisIsAServo in allServos){
-            telemetry.addData("ServoPosition", thisIsAServo.GetPosition())
+            telemetry.addData("ServoPosition", thisIsAServo.GetPosition());
         }
         
         telemetry.update();
@@ -174,7 +174,7 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
             double yaw     =  gamepad1.right_stick_x; // Rotate left/right
 
                 //triggers need a gretter then or less then value to work propely 
-            boolean tubeLifter_Up =gamepad2.dpad_up
+            boolean tubeLifter_Up =gamepad2.dpad_up;
             boolean tubeLifter_Down =gamepad2.dpad_down;
             boolean thisIsAServo_On_Off =gamepad2.dpad_right;
             boolean impeller_On_Off =gamepad2.dpad_left;
