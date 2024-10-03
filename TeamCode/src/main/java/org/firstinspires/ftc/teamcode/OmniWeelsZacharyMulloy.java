@@ -211,17 +211,17 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
                 tubeLifter.setpower(0); 
             }
     //###############################################            
-            if (impeller_On_Off = true){
+            if (impeller_On_Off == true){
                 impeller.setpower(1);  
             }
-            if (impeller_On_Off = false){
+            if (impeller_On_Off == false){
                 impeller.setpower(0);  
             }
     //###############################################
-            if (thisIsAServo_On_Off = true){
+            if (thisIsAServo_On_Off == true){
                 thisIsAServo.setpower(1);  
             } 
-            if (thisIsAServo_On_Off = false){
+            if (thisIsAServo_On_Off == false){
                 thisIsAServo.setpower(0); 
             }
     //###############################################  
