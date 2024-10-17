@@ -152,11 +152,11 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
         
         for (DcMotor tubelifter in allMotors) {
             telemetry.addData("MotorSpeed", ThisMotor.GetSpeed());
-        };
+        }
 
         for (Servo thisIsAServo in allServos){
             telemetry.addData("ServoPosition", thisIsAServo.GetPosition());
-        };
+        }
         
         telemetry.update();
 
@@ -183,7 +183,7 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
             
             // Combine the joystick requests for each axis-motion to determine each wheel's power.
             // Set up a variable for each drive wheel to save the power level for telemetry.
-            static final double LIFT_SPEED = (0.2);
+            final double LIFT_SPEED = (0.2);
             static int LIFT_SPEED = (0.2);
             
             double leftFrontPower  = axial + lateral + yaw;
@@ -229,7 +229,7 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
             if (tubelisfter_Up){
                 tubelifter.setpower(LIFT_SPEED);
             } else if (tubelifter_down){
-                tubelifter.setpower(-LIFT_SPEED)
+                tubelifter.setpower(-LIFT_SPEED);
             } else {
                 tubeLifter.setpower(0);
             }
