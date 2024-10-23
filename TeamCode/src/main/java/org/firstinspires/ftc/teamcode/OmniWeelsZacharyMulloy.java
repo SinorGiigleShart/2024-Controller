@@ -30,12 +30,14 @@
 package org.firstinspires.ftc.robotcontroller.external.samples;
 
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
+import com.qualcomm.robotcore.hardware.Servo;
+import java.util.ArrayList;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import java.util.List;
-import java.until.ArrayList;
+import java.util.ArrayList;
 
 /*
  * This file contains an example of a Linear "OpMode".
@@ -67,7 +69,7 @@ import java.until.ArrayList;
 
 @TeleOp(name="OmniWeelsZacharyMulloy 0.1", group="OmniOp")
 @Disabled
-public class OmniWeelsZacharyMulloy extends LinearOpMode {
+public class OmniWeelsFreakyZac extends LinearOpMode {
 
     // Declare OpMode members for each of the 4 motors.
     private ElapsedTime runtime = new ElapsedTime();
@@ -89,8 +91,8 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
     public void runOpMode() {
 
 //its the thing that holds all of your motors and stuff
-    list<DcMotor> allMotors = new ArrayList<>();
-    list<Servo>   allServos = new ArrayList<>();
+    List<DcMotor> allMotors = new ArrayList<>();
+    List<Servo>   allServos = new ArrayList<>();
 
 
         // Initialize the hardware variables. Note that the strings used here must correspond
@@ -111,7 +113,7 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
         thisIsAServo = hardwareMap.get(Servo.class, "this_Is_A_Servo"); 
 
             //allMotors.add
-        allMotors.add(LeftFrontDrive);
+        allMotors.add(leftFrontDrive);
         allMotors.add(rightFrontDrive);
         allMotors.add(leftBackDrive);
         allMotors.add(rightBackDrive);
@@ -149,13 +151,14 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
         // telemetry.addData("status", "runTime: " +ruuntime.toString());
         // telemetry.addData("Front Left/Right", "%4.2f", "%4.2", leftFrontPower, rightFrontPower);
         // telemetry.addData("back Left/Right", "%4.2f", "%4.2", leftBackPower, rightBackPower);
+
         
-        for (DcMotor tubelifter in allMotors) {
-            telemetry.addData("MotorSpeed", ThisMotor.GetSpeed());
+        for (DcMotor ThisMotor : allMotors) {
+            telemetry.addData("MotorSpeed", ThisMotor.getPower());
         }
 
-        for (Servo thisIsAServo in allServos){
-            telemetry.addData("ServoPosition", thisIsAServo.GetPosition());
+        for (Servo thisIsAServo : allServos){
+            telemetry.addData("ServoPosition", thisIsAServo.getPosition());
         }
         
         telemetry.update();
@@ -184,7 +187,6 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
             // Combine the joystick requests for each axis-motion to determine each wheel's power.
             // Set up a variable for each drive wheel to save the power level for telemetry.
             final double LIFT_SPEED = (0.2);
-            static int LIFT_SPEED = (0.2);
             
             double leftFrontPower  = axial + lateral + yaw;
             double rightFrontPower = axial - lateral - yaw;
@@ -207,31 +209,31 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
             }
     //###############################################
             if (tubeLifter_Up == true) {
-               tubelifter.setpower(1);  
-            }else if (tubeLifter_up == false){
-                tubeLifter.setpower(0); 
+               tubelifter.setPower(1);  
+            }else if (tubeLifter_Up == false){
+                tubelifter.setPower(0); 
             }
     //###############################################            
             if (impeller_On_Off == true){
-                impeller.setpower(1);  
+                impeller.setPower(1.0);  
             }
             if (impeller_On_Off == false){
-                impeller.setpower(0);  
+                impeller.setPower(0.0);  
             }
     //###############################################
             if (thisIsAServo_On_Off == true){
-                thisIsAServo.setpower(1);  
+                thisIsAServo.setPosition(1.0);  
             } 
             if (thisIsAServo_On_Off == false){
-                thisIsAServo.setpower(0); 
+                thisIsAServo.setPosition(0.0); 
             }
     //###############################################  
-            if (tubelisfter_Up){
-                tubelifter.setpower(LIFT_SPEED);
-            } else if (tubelifter_down){
-                tubelifter.setpower(-LIFT_SPEED);
+            if (tubeLifter_Up){
+                tubelifter.setPower(LIFT_SPEED);
+            } else if (tubeLifter_Down){
+                tubelifter.setPower(-LIFT_SPEED);
             } else {
-                tubeLifter.setpower(0);
+                tubelifter.setPower(0);
             }
             // This is test code:
             //
@@ -263,4 +265,3 @@ public class OmniWeelsZacharyMulloy extends LinearOpMode {
             telemetry.update();
         }
     }}
-
