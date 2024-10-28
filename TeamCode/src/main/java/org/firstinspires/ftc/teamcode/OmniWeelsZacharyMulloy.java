@@ -173,20 +173,28 @@ public class OmniWeelsFreakyZac extends LinearOpMode {
 
             // POV Mode uses left joystick to go forward & strafe, and right joystick to rotate.
             
+                //custom motors
+            boolean tubeLifter_Up =gamepad2.dpad_up;
+            boolean tubeLifter_Down =gamepad2.dpad_down;
+                
+                //custom servos 
+            boolean thisIsAServo_On_Off =gamepad2.dpad_right;
+            boolean impeller_On_Off =gamepad2.dpad_left;
+//###################################)(*^&#)*&$^)!(*@#&$*&!@&#_$^!)(@*&$()&!@^#()$&!@(&*#$^(!@&#$&&!@#$&)*&@#^$(*!^@*)&$^!@)*&#$^)&*@^#$)&(!^@#$(*&(*$&*!#@&$)(!^@#)*$&^!@&*)#$^(*&!@#^$&*^#$&*!&^@#)$^!@)#*&$^)
+                
+            double 
+
+//###################################)(*^&#)*&$^)!(*@#&$*&!@&#_$^!)(@*&$()&!@^#()$&!@(&*#$^(!@&#$&&!@#$&)*&@#^$(*!^@*)&$^!@)*&#$^)&*@^#$)&(!^@#$(*&(*$&*!#@&$)(!^@#)*$&^!@&*)#$^(*&!@#^$&*^#$&*!&^@#)$^!@)#*&$^)
+                
+            // Combine the joystick requests for each axis motion to determine each wheel's power.
+            // Set up a variable for each drive wheel to save the power level for telemetry.
+            final double LIFT_SPEED = (0.2);
+
+
+                //driving thangs
             double axial   = -gamepad1.left_stick_y;  // Note: pushing stick forward gives negative value -- Forward/Backward
             double lateral =  gamepad1.left_stick_x;  // Strafe left/right
             double yaw     =  gamepad1.right_stick_x; // Rotate left/right
-
-                //triggers need a gretter then or less then value to work propely 
-            boolean tubeLifter_Up =gamepad2.dpad_up;
-            boolean tubeLifter_Down =gamepad2.dpad_down;
-            boolean thisIsAServo_On_Off =gamepad2.dpad_right;
-            boolean impeller_On_Off =gamepad2.dpad_left;
-            
-            
-            // Combine the joystick requests for each axis-motion to determine each wheel's power.
-            // Set up a variable for each drive wheel to save the power level for telemetry.
-            final double LIFT_SPEED = (0.2);
             
             double leftFrontPower  = axial + lateral + yaw;
             double rightFrontPower = axial - lateral - yaw;
