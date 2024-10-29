@@ -69,7 +69,7 @@ import java.util.ArrayList;
 
 @TeleOp(name="OmniWeelsZacharyMulloy 0.1", group="OmniOp")
 @Disabled
-public class OmniWeelsFreakyZac extends LinearOpMode {
+public class BigBoyZacharyMulloyOmniWeels extends LinearOpMode {
 
     // Declare OpMode members for each of the 4 motors.
     private ElapsedTime runtime = new ElapsedTime();
@@ -182,7 +182,7 @@ public class OmniWeelsFreakyZac extends LinearOpMode {
             boolean impeller_On_Off =gamepad2.dpad_left;
 //###################################)(*^&#)*&$^)!(*@#&$*&!@&#_$^!)(@*&$()&!@^#()$&!@(&*#$^(!@&#$&&!@#$&)*&@#^$(*!^@*)&$^!@)*&#$^)&*@^#$)&(!^@#$(*&(*$&*!#@&$)(!^@#)*$&^!@&*)#$^(*&!@#^$&*^#$&*!&^@#)$^!@)#*&$^)
                 
-            double 
+            
 
 //###################################)(*^&#)*&$^)!(*@#&$*&!@&#_$^!)(@*&$()&!@^#()$&!@(&*#$^(!@&#$&&!@#$&)*&@#^$(*!^@*)&$^!@)*&#$^)&*@^#$)&(!^@#$(*&(*$&*!#@&$)(!^@#)*$&^!@&*)#$^(*&!@#^$&*^#$&*!&^@#)$^!@)#*&$^)
                 
