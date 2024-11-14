@@ -68,7 +68,6 @@ import java.util.ArrayList;
  */
 
 @TeleOp(name="OmniWeelsZacharyMulloy 0.1", group="OmniOp")
-@Disabled
 public class BigBoyZacharyMulloyOmniWeels extends LinearOpMode {
 
     // Declare OpMode members for each of the 4 motors.
@@ -152,17 +151,6 @@ public class BigBoyZacharyMulloyOmniWeels extends LinearOpMode {
         // telemetry.addData("Front Left/Right", "%4.2f", "%4.2", leftFrontPower, rightFrontPower);
         // telemetry.addData("back Left/Right", "%4.2f", "%4.2", leftBackPower, rightBackPower);
 
-        
-        for (DcMotor ThisMotor : allMotors) {
-            telemetry.addData("MotorSpeed", ThisMotor.getPower());
-        }
-
-        for (Servo thisIsAServo : allServos){
-            telemetry.addData("ServoPosition", thisIsAServo.getPosition());
-        }
-        
-        telemetry.update();
-
         waitForStart();
         runtime.reset();
 
@@ -180,15 +168,14 @@ public class BigBoyZacharyMulloyOmniWeels extends LinearOpMode {
                 //custom servos 
             boolean thisIsAServo_On_Off =gamepad2.dpad_right;
             boolean impeller_On_Off =gamepad2.dpad_left;
-//###################################)(*^&#)*&$^)!(*@#&$*&!@&#_$^!)(@*&$()&!@^#()$&!@(&*#$^(!@&#$&&!@#$&)*&@#^$(*!^@*)&$^!@)*&#$^)&*@^#$)&(!^@#$(*&(*$&*!#@&$)(!^@#)*$&^!@&*)#$^(*&!@#^$&*^#$&*!&^@#)$^!@)#*&$^)
-                
             
-
-//###################################)(*^&#)*&$^)!(*@#&$*&!@&#_$^!)(@*&$()&!@^#()$&!@(&*#$^(!@&#$&&!@#$&)*&@#^$(*!^@*)&$^!@)*&#$^)&*@^#$)&(!^@#$(*&(*$&*!#@&$)(!^@#)*$&^!@&*)#$^(*&!@#^$&*^#$&*!&^@#)$^!@)#*&$^)
+            boolean impellerPower = false;
+            
+            int counter = 1;
                 
             // Combine the joystick requests for each axis motion to determine each wheel's power.
             // Set up a variable for each drive wheel to save the power level for telemetry.
-            final double LIFT_SPEED = (0.2);
+         
 
 
                 //driving thangs
@@ -208,41 +195,67 @@ public class BigBoyZacharyMulloyOmniWeels extends LinearOpMode {
             max = Math.max(max, Math.abs(leftBackPower));
             max = Math.max(max, Math.abs(rightBackPower));
             
-    //###############################################            
+    //############################################### 
+    
             if (max > 1.0) {
                 leftFrontPower  /= max;
                 rightFrontPower /= max;
                 leftBackPower   /= max;
                 rightBackPower  /= max;
             }
+            
     //###############################################
-            if (tubeLifter_Up == true) {
-               tubelifter.setPower(1);  
-            }else if (tubeLifter_Up == false){
-                tubelifter.setPower(0); 
+    
+            if (tubeLifter_Up) {
+               tubelifter.setPower(1.0);  
+            }else {
+                tubelifter.setPower(0.0); 
             }
-    //###############################################            
-            if (impeller_On_Off == true){
-                impeller.setPower(1.0);  
-            }
-            if (impeller_On_Off == false){
-                impeller.setPower(0.0);  
-            }
+            
+    //###############################################   
+    
+            if (tubeLifter_Down){
+                tubelifter.setPower(-1.0);
+            } else {
+                tubelifter.setPower(0);
+            } 
+            
     //###############################################
+    
+            if(impeller_On_Off == true){
+               
+                if(impellerPower){
+                    
+                    impellerPower = false; 
+                    
+                } else {
+                    
+                    impellerPower = true;
+                    
+                }
+            }
+            
+            if (impellerPower){
+                
+                impeller.setPower (1.0);
+                
+            } else {
+                
+                impeller.setPower (0.0);
+                
+            }
+            
+            
+    //###############################################
+    
             if (thisIsAServo_On_Off == true){
                 thisIsAServo.setPosition(1.0);  
             } 
             if (thisIsAServo_On_Off == false){
                 thisIsAServo.setPosition(0.0); 
             }
-    //###############################################  
-            if (tubeLifter_Up){
-                tubelifter.setPower(LIFT_SPEED);
-            } else if (tubeLifter_Down){
-                tubelifter.setPower(-LIFT_SPEED);
-            } else {
-                tubelifter.setPower(0);
-            }
+    
+            
             // This is test code:
             //
             // Uncomment the following code to test your motor directions.
@@ -266,10 +279,11 @@ public class BigBoyZacharyMulloyOmniWeels extends LinearOpMode {
             leftBackDrive.setPower(leftBackPower);
             rightBackDrive.setPower(rightBackPower);
 
-            // Show the elapsed game time and wheel power.
-            telemetry.addData("Status", "Run Time: " + runtime.toString());
-            telemetry.addData("Front left/Right", "%4.2f, %4.2f", leftFrontPower, rightFrontPower);
-            telemetry.addData("Back  left/Right", "%4.2f, %4.2f", leftBackPower, rightBackPower);
-            telemetry.update();
-        }
+                for (DcMotor thisMotor: allMotors) {
+                        telemetry.addData("MotorSpeed", thisMotor.getPower());
+                    }
+                for (Servo thisServo: allServos) {
+                         telemetry.addData("ServoPosition", thisServo.getPosition());
+                    }
+                }
     }}
