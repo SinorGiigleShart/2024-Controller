@@ -72,13 +72,15 @@ public class AutoWithHardware extends LinearOpMode {
     RobotHardware   robot       = new RobotHardware(this);
 
     @Override
-    public void runOpMode() {
+    public void runOpMode() 
+"
+
         double drive        = 0;
         double turn         = 0;
         double strafe       = 0;
         
         double INCH_TO_TICK = 20.0; // untested value
-        double TICK_TO_INCH = 0.05;
+        double TICK_TO_INCH = 0.05; // untested value 
  
         
         // double arm          = 0;
@@ -93,7 +95,64 @@ public class AutoWithHardware extends LinearOpMode {
 
         // run until the end of the match (driver presses STOP)
         while (opModeIsActive()) {
-
+            
+            //1 move foward
+            robot.driveRobot(1,0,0); 
+            sleep( 36 * INCH_TO_TICK );
+            robot.driveRobot(0,0,0); 
+            
+            //2 turn
+            robot.driveRobot(0,0,0.5); //positive numbers make it turn right 
+            sleep( 135 * INCH_TO_TICK );
+            robot.driveRobot(0,0,0);
+            
+            //3 move back
+            robot.driveRobot(-1,0,0);
+            sleep( 24 * INCH_TO_TICK );
+            robot.driveRobot(0,0,0);
+            
+            //4 move forward and turn
+            robot.driveRobot(1,0,0.05);
+            sleep( 57.6 * INCH_TO_TICK );
+            robot.driveRobot(0,0,0);        
+            
+            //5 turn back 10 degrees 
+            robot.driveRobot(0,0,-0.05);
+            sleep( 57.6 * INCH_TO_TICK );
+            robot.driveRobot(0,0,0);
+            
+            //6 move back
+            robot.driveRobot(-1,0,0);
+            sleep( 54 * INCH_TO_TICK );
+            robot.driveRobot(0,0,0);
+            
+            //7 strafe right
+            robot.driveRobot(0,0,0);
+            sleep( 6 * INCH_TO_TICK );
+            robot.driveRobot(0,0,0);
+            
+            //8 move forward
+            robot.driveRobot(1,0,0);
+            sleep( 54 * INCH_TO_TICK );
+            robot.driveRobot(0,0,0);
+            
+            //9 move back
+            robot.driveRobot(-1,0,0);
+            sleep( 54 * INCH_TO_TICK );
+            robot.driveRobot(0,0,0);
+            
+            //10 move right
+            robot.driveRobot(0,1,0);
+            sleep( 6 * INCH_TO_TICK );
+            robot.driveRobot(0,0,0);
+            
+            //11 move forward
+            robot.driveRobot(1,0,0);
+            sleep( 54 * INCH_TO_TICK );
+            robot.driveRobot(0,0,0);
+            sleep( 100 );
+            
+            
             // Run wheels in POV mode (note: The joystick goes negative when pushed forward, so negate it)
             // In this mode the Left stick moves the robot fwd and back, the Right stick turns left and right.
             // This way it's also easy to just drive straight, or just turn.
