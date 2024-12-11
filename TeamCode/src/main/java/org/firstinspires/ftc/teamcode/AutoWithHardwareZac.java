@@ -73,7 +73,6 @@ public class AutoWithHardware extends LinearOpMode {
 
     @Override
     public void runOpMode() 
-"
 
         double drive        = 0;
         double turn         = 0;
