@@ -78,7 +78,7 @@ public class AutoWithHardware extends LinearOpMode {
         double turn         = 0;
         double strafe       = 0;
         
-        double INCH_TO_TICK = 20.0; // untested value
+        double INCH_TO_TICK = 10000000.0; // 10,000,000 ticks in a second
         double TICK_TO_INCH = 0.05; // untested value 
  
         
