@@ -99,51 +99,61 @@ public class AutoWithHardware extends LinearOpMode {
             robot.driveRobot(1,0,0); 
             sleep( 36 * INCH_TO_TICK );
             robot.driveRobot(0,0,0); 
+            sleep( 5 );
             
             //2 turn
             robot.driveRobot(0,0,0.5); //positive numbers make it turn right 
             sleep( 135 * INCH_TO_TICK );
             robot.driveRobot(0,0,0);
+            sleep( 5 );
             
             //3 move back
             robot.driveRobot(-1,0,0);
             sleep( 24 * INCH_TO_TICK );
             robot.driveRobot(0,0,0);
+            sleep( 5 );
             
             //4 move forward and turn
             robot.driveRobot(1,0,0.05);
             sleep( 57.6 * INCH_TO_TICK );
             robot.driveRobot(0,0,0);        
+            sleep( 5 );
             
             //5 turn back 10 degrees 
             robot.driveRobot(0,0,-0.05);
             sleep( 57.6 * INCH_TO_TICK );
             robot.driveRobot(0,0,0);
+            sleep( 5 );
             
             //6 move back
             robot.driveRobot(-1,0,0);
             sleep( 54 * INCH_TO_TICK );
             robot.driveRobot(0,0,0);
+            sleep( 5 );
             
             //7 strafe right
             robot.driveRobot(0,0,0);
             sleep( 6 * INCH_TO_TICK );
             robot.driveRobot(0,0,0);
+            sleep( 5 );
             
             //8 move forward
             robot.driveRobot(1,0,0);
             sleep( 54 * INCH_TO_TICK );
             robot.driveRobot(0,0,0);
+            sleep( 5 );
             
             //9 move back
             robot.driveRobot(-1,0,0);
             sleep( 54 * INCH_TO_TICK );
             robot.driveRobot(0,0,0);
+            sleep( 5 );
             
             //10 move right
             robot.driveRobot(0,1,0);
             sleep( 6 * INCH_TO_TICK );
             robot.driveRobot(0,0,0);
+            sleep( 5 );
             
             //11 move forward
             robot.driveRobot(1,0,0);
